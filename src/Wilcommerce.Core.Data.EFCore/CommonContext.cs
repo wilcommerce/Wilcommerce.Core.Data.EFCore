@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Wilcommerce.Core.Common.Domain.Events;
 using Wilcommerce.Core.Common.Domain.Models;
+using Wilcommerce.Core.Data.EFCore.Mapping;
 
 namespace Wilcommerce.Core.Data.EFCore
 {
@@ -20,6 +21,14 @@ namespace Wilcommerce.Core.Data.EFCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder
+                .MapUser()
+                .MapSettings()
+                .MapEvents()
+                .MapCurrencies()
+                .MapImages()
+                .MapSeo();
+
             base.OnModelCreating(modelBuilder);
         }
     }
