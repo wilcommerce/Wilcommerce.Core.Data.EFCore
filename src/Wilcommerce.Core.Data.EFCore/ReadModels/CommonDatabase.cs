@@ -7,7 +7,12 @@ namespace Wilcommerce.Core.Data.EFCore.ReadModels
 {
     public class CommonDatabase : ICommonDatabase
     {
-        protected CommonContext _context = new CommonContext();
+        protected CommonContext _context;
+
+        public CommonDatabase(CommonContext context)
+        {
+            _context = context;
+        }
 
         public IQueryable<EventWrapper> Events => _context.Events;
 

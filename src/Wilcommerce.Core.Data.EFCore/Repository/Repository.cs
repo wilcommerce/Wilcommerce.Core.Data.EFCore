@@ -8,9 +8,9 @@ namespace Wilcommerce.Core.Data.EFCore.Repository
     {
         protected CommonContext _context;
 
-        public Repository()
+        public Repository(CommonContext context)
         {
-            _context = new CommonContext();
+            _context = context;
         }
 
         public void Dispose()

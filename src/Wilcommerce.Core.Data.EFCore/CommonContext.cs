@@ -19,6 +19,12 @@ namespace Wilcommerce.Core.Data.EFCore
 
         public virtual DbSet<SeoData> SeoData { get; set; }
 
+        public CommonContext(DbContextOptions<CommonContext> options)
+            : base(options)
+        {
+
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder

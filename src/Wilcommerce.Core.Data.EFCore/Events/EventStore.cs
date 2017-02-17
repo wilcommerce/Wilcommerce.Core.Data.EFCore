@@ -5,21 +5,25 @@ namespace Wilcommerce.Core.Data.EFCore.Events
 {
     public class EventStore : IEventStore
     {
+        protected CommonContext _context;
+
+        public EventStore(CommonContext context)
+        {
+            _context = context;
+        }
+
         public void Save<TEvent>(TEvent @event) where TEvent : DomainEvent
         {
-            using (var context = new CommonContext())
+            try
             {
-                try
-                {
-                    var ev = EventWrapper.Wrap(@event);
-                    context.Events.Add(ev);
+                var ev = EventWrapper.Wrap(@event);
+                _context.Events.Add(ev);
 
-                    context.SaveChanges();
-                }
-                catch 
-                {
-                    throw;
-                }
+                _context.SaveChanges();
+            }
+            catch
+            {
+                throw;
             }
         }
     }
