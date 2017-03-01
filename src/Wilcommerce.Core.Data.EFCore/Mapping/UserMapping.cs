@@ -5,6 +5,11 @@ namespace Wilcommerce.Core.Data.EFCore.Mapping
 {
     public static class UserMapping
     {
+        /// <summary>
+        /// Extension method. Maps the user class
+        /// </summary>
+        /// <param name="modelBuilder">The modelBuilder instance</param>
+        /// <returns>The modelBuilder instance</returns>
         public static ModelBuilder MapUser(this ModelBuilder modelBuilder)
         {
             var userMapping = modelBuilder.Entity<User>();

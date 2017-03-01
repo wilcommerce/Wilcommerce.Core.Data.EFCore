@@ -5,6 +5,11 @@ namespace Wilcommerce.Core.Data.EFCore.Mapping
 {
     public static class GeneralSettingsMapping
     {
+        /// <summary>
+        /// Extension method. Maps the general settings class
+        /// </summary>
+        /// <param name="modelBuilder">The modelBuilder instance</param>
+        /// <returns>The modelBuilder instance</returns>
         public static ModelBuilder MapSettings(this ModelBuilder modelBuilder)
         {
             var settingsMapping = modelBuilder.Entity<GeneralSettings>();
