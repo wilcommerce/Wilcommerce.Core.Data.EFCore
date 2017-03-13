@@ -1,20 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Wilcommerce.Core.Common.Domain.Repository;
 
 namespace Wilcommerce.Core.Data.EFCore.Repository
 {
+    /// <summary>
+    /// Implementation of <see cref="IRepository"/>
+    /// </summary>
     public class Repository : IRepository
     {
+        /// <summary>
+        /// The DbContext instance
+        /// </summary>
         protected CommonContext _context;
 
-        public Repository()
+        public Repository(CommonContext context)
         {
-            _context = new CommonContext();
+            _context = context;
         }
 
+        /// <summary>
+        /// Dispose all the resource used
+        /// </summary>
         public void Dispose()
         {
             if (_context != null)
@@ -25,6 +32,9 @@ namespace Wilcommerce.Core.Data.EFCore.Repository
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        /// Saves all the changes made on the aggregate
+        /// </summary>
         public void SaveChanges()
         {
             try
@@ -37,6 +47,10 @@ namespace Wilcommerce.Core.Data.EFCore.Repository
             }
         }
 
+        /// <summary>
+        /// Async method. Saves all the changes made on the aggregate
+        /// </summary>
+        /// <returns></returns>
         public async Task SaveChangesAsync()
         {
             try
@@ -49,6 +63,11 @@ namespace Wilcommerce.Core.Data.EFCore.Repository
             }
         }
 
+        /// <summary>
+        /// Add an aggregate to the repository
+        /// </summary>
+        /// <typeparam name="TModel">The aggregate's type</typeparam>
+        /// <param name="model">The aggregate to add</param>
         public void Add<TModel>(TModel model) where TModel : class, Infrastructure.IAggregateRoot
         {
             try
@@ -61,6 +80,12 @@ namespace Wilcommerce.Core.Data.EFCore.Repository
             }
         }
 
+        /// <summary>
+        /// Gets the aggregate based on the specified key
+        /// </summary>
+        /// <typeparam name="TModel">The aggregate's type</typeparam>
+        /// <param name="key">The key of the aggregate to search</param>
+        /// <returns>The aggregate found</returns>
         public TModel GetByKey<TModel>(Guid key) where TModel : class, Infrastructure.IAggregateRoot
         {
             try
@@ -73,6 +98,12 @@ namespace Wilcommerce.Core.Data.EFCore.Repository
             }
         }
 
+        /// <summary>
+        /// Async method. Gets the aggregate based on the specified key
+        /// </summary>
+        /// <typeparam name="TModel">The aggregate's type</typeparam>
+        /// <param name="key">The key of the aggregate to search</param>
+        /// <returns>The aggregate found</returns>
         public async Task<TModel> GetByKeyAsync<TModel>(Guid key) where TModel : class, Infrastructure.IAggregateRoot
         {
             try

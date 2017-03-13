@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Wilcommerce.Core.Common.Domain.Events;
 using Wilcommerce.Core.Common.Domain.Models;
+using Wilcommerce.Core.Data.EFCore.Mapping;
 
 namespace Wilcommerce.Core.Data.EFCore
 {
@@ -18,8 +19,22 @@ namespace Wilcommerce.Core.Data.EFCore
 
         public virtual DbSet<SeoData> SeoData { get; set; }
 
+        public CommonContext(DbContextOptions<CommonContext> options)
+            : base(options)
+        {
+
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder
+                .MapUser()
+                .MapSettings()
+                .MapEvents()
+                .MapCurrencies()
+                .MapImages()
+                .MapSeo();
+
             base.OnModelCreating(modelBuilder);
         }
     }
