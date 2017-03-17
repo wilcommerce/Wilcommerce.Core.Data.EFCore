@@ -1,6 +1,12 @@
 # Wilcommerce.Core.Data.EFCore
 Contains an implementation of the [Wilcommerce.Core](https://github.com/wilcommerce/Wilcommerce.Core) packages using Entity Framework Core as persistence framework.
 
+## Installation
+
+Nuget package available here 
+
+[https://www.nuget.org/packages/Wilcommerce.Core.Data.EFCore](https://www.nuget.org/packages/Wilcommerce.Core.Data.EFCore)
+
 ## Usage
 Add the CommonContext class to your project.
 
