@@ -8,6 +8,12 @@ namespace Wilcommerce.Core.Data.EFCore.Events
     {
         public virtual DbSet<EventWrapper> Events { get; set; }
 
+        public EventsContext(DbContextOptions<EventsContext> options)
+            : base(options)
+        {
+
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.MapEvents();

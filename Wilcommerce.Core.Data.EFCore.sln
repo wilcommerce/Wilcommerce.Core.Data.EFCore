@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wilcommerce.Core.Data.EFCore", "src\Wilcommerce.Core.Data.EFCore\Wilcommerce.Core.Data.EFCore.csproj", "{EB72DD2A-7476-4897-84E7-5FA13F647429}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{35FEF07C-624C-49C8-8441-842CCBE75478}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wilcommerce.Core.Data.EFCore.Test", "Wilcommerce.Core.Data.EFCore.Test\Wilcommerce.Core.Data.EFCore.Test.csproj", "{EE8B08D8-B340-4D2D-BE9C-FC675083B951}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,12 +26,17 @@ Global
 		{EB72DD2A-7476-4897-84E7-5FA13F647429}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB72DD2A-7476-4897-84E7-5FA13F647429}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB72DD2A-7476-4897-84E7-5FA13F647429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE8B08D8-B340-4D2D-BE9C-FC675083B951}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE8B08D8-B340-4D2D-BE9C-FC675083B951}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE8B08D8-B340-4D2D-BE9C-FC675083B951}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE8B08D8-B340-4D2D-BE9C-FC675083B951}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EB72DD2A-7476-4897-84E7-5FA13F647429} = {B70C5F41-A3ED-4945-A972-5B93B1588066}
+		{EE8B08D8-B340-4D2D-BE9C-FC675083B951} = {35FEF07C-624C-49C8-8441-842CCBE75478}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {240F3E42-268A-4FB6-BB4A-B72770D8F66F}
