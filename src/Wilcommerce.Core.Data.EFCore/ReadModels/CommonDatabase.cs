@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Wilcommerce.Core.Common.Domain.Events;
 using Wilcommerce.Core.Common.Domain.Models;
 using Wilcommerce.Core.Common.Domain.ReadModels;
 
