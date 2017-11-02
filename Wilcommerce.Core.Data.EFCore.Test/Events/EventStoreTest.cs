@@ -20,16 +20,28 @@ namespace Wilcommerce.Core.Data.EFCore.Test.Events
         }
 
         [Fact]
-        public void Find_NewAdministratorCreatedEvent_Should_Return_1_Row_And_Match_Email_And_Name()
+        public void Find_NewAdministratorCreatedEvent_Should_Return_Rows_And_Match_Email_And_Name()
         {
             var events = _eventStore.Find<NewAdministratorCreatedEvent>(DateTime.Now);
             int count = events.Count();
 
-            Assert.Equal(1, count);
+            Assert.True(count > 0);
 
-            var ev = events.First();
-            Assert.Equal("admin@wilcommerce.com", ev.Email);
-            Assert.Equal("Administrator", ev.Name);
+            bool exists = events.Any(e => e.Email == "admin@wilcommerce.com" && e.Name == "Administrator");
+            Assert.True(exists);
+        }
+
+        [Fact]
+        public void Save_NewAdministratorCreatedEvent_Should_Increment_EventsNumber()
+        {
+            int count = _eventStore.Find<NewAdministratorCreatedEvent>(DateTime.Now).Count();
+
+            var ev = new NewAdministratorCreatedEvent(Guid.NewGuid(), "Administrator2", "admin2@wilcommerce.com");
+            _eventStore.Save(ev);
+
+            int newCount = _eventStore.Find<NewAdministratorCreatedEvent>(DateTime.Now).Count();
+
+            Assert.Equal(count + 1, newCount);
         }
     }
 }
