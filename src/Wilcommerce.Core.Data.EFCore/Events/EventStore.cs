@@ -1,4 +1,6 @@
-﻿using Wilcommerce.Core.Common.Domain.Events;
+﻿using System;
+using System.Collections.Generic;
+using Wilcommerce.Core.Common.Domain.Events;
 using Wilcommerce.Core.Infrastructure;
 
 namespace Wilcommerce.Core.Data.EFCore.Events
@@ -11,11 +13,35 @@ namespace Wilcommerce.Core.Data.EFCore.Events
         /// <summary>
         /// The DbContext instance
         /// </summary>
-        protected CommonContext _context;
+        protected EventsContext _context;
 
-        public EventStore(CommonContext context)
+        /// <summary>
+        /// Construct the event store
+        /// </summary>
+        /// <param name="context">The db context instance</param>
+        public EventStore(EventsContext context)
         {
             _context = context;
+        }
+
+        public IEnumerable<TEvent> Find<TEvent>(DateTime timestamp) where TEvent : DomainEvent
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<TEvent> Find<TEvent>(string entityType, DateTime timestamp) where TEvent : DomainEvent
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<TEvent> Find<TEvent>(string entityType, Guid entityId, DateTime timestamp) where TEvent : DomainEvent
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<DomainEvent> FindAll(string entityType, Guid entityId, DateTime timestamp)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

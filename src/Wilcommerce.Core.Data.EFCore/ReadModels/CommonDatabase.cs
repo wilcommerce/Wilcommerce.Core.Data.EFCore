@@ -21,11 +21,6 @@ namespace Wilcommerce.Core.Data.EFCore.ReadModels
         }
 
         /// <summary>
-        /// Get the list of events
-        /// </summary>
-        public IQueryable<EventWrapper> Events => _context.Events;
-
-        /// <summary>
         /// Get the list of settings
         /// </summary>
         public IQueryable<GeneralSettings> Settings => _context.Settings;
