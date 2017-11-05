@@ -10,8 +10,12 @@ namespace Wilcommerce.Core.Data.EFCore.Test.Fixtures
     {
         public EventsContext Context { get; protected set; }
 
+        public Guid UserId { get; protected set; }
+
         public EventsFixtures()
         {
+            UserId = Guid.NewGuid();
+
             BuildContext();
             PrepareData();
         }
@@ -30,18 +34,18 @@ namespace Wilcommerce.Core.Data.EFCore.Test.Fixtures
 
         protected virtual void PrepareData()
         {
-            var administratorCreatedEvent = new NewAdministratorCreatedEvent(Guid.NewGuid(), "Administrator", "admin@wilcommerce.com");
+            var administratorCreatedEvent = new NewAdministratorCreatedEvent(UserId, "Administrator", "admin@wilcommerce.com");
             Context.Events.Add(EventWrapper.Wrap(administratorCreatedEvent));
 
             for (int i = 0; i < 3; i++)
             {
-                var ev = new UserEnabledEvent(Guid.NewGuid());
+                var ev = new UserEnabledEvent(UserId);
                 Context.Events.Add(EventWrapper.Wrap(ev));
             }
 
             for (int i = 0; i < 2; i++)
             {
-                var ev = new UserDisabledEvent(Guid.NewGuid());
+                var ev = new UserDisabledEvent(UserId);
                 Context.Events.Add(EventWrapper.Wrap(ev));
             }
 
