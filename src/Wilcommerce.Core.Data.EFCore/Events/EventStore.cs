@@ -120,6 +120,11 @@ namespace Wilcommerce.Core.Data.EFCore.Events
         }
 
         #region Protected Methods
+        /// <summary>
+        /// Find a list of event wrapper by the specified criteria
+        /// </summary>
+        /// <param name="criteria">The criteria to apply</param>
+        /// <returns>The list of event wrapper</returns>
         protected virtual IQueryable<EventWrapper> _FindBy(Expression<Func<EventWrapper, bool>> criteria)
         {
             if (criteria == null)
