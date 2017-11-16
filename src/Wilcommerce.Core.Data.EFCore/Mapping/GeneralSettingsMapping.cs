@@ -3,6 +3,9 @@ using Wilcommerce.Core.Common.Domain.Models;
 
 namespace Wilcommerce.Core.Data.EFCore.Mapping
 {
+    /// <summary>
+    /// Defines the modelBuilder's extension methods to map the <see cref="GeneralSettings"/> class
+    /// </summary>
     public static class GeneralSettingsMapping
     {
         /// <summary>

@@ -14,6 +14,10 @@ namespace Wilcommerce.Core.Data.EFCore.ReadModels
         /// </summary>
         protected CommonContext _context;
 
+        /// <summary>
+        /// Construct the common database
+        /// </summary>
+        /// <param name="context">The instance of the common context</param>
         public CommonDatabase(CommonContext context)
         {
             _context = context;

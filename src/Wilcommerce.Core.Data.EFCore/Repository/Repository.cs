@@ -14,6 +14,10 @@ namespace Wilcommerce.Core.Data.EFCore.Repository
         /// </summary>
         protected CommonContext _context;
 
+        /// <summary>
+        /// Construct the repository for the common context
+        /// </summary>
+        /// <param name="context">The common context instance</param>
         public Repository(CommonContext context)
         {
             _context = context;
