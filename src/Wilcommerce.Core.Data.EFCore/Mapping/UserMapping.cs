@@ -3,6 +3,9 @@ using Wilcommerce.Core.Common.Domain.Models;
 
 namespace Wilcommerce.Core.Data.EFCore.Mapping
 {
+    /// <summary>
+    /// Defines the modelBuilder's extension methods to map the <see cref="User"/> class
+    /// </summary>
     public static class UserMapping
     {
         /// <summary>
@@ -18,7 +21,7 @@ namespace Wilcommerce.Core.Data.EFCore.Mapping
                 .ToTable("Wilcommerce_Users")
                 .HasIndex(u => u.Email).IsUnique();
 
-            userMapping.HasOne(u => u.ProfileImage);
+            userMapping.OwnsOne(u => u.ProfileImage);
 
             return modelBuilder;
         }

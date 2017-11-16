@@ -14,7 +14,13 @@ For example in an ASP.NET Core project add this line to the ConfigureServices me
 ```<C#>
 services.AddDbContext<CommonContext>(options => // Specify your provider);
 ```
-The CommonContext is injected in the read model component, the Repository and the EventStore implementation.
+The CommonContext is injected in the read model component and the Repositoryimplementation.
+
+If you need to persists the events using Entity Framework Core, add the EventsContext class to your project.
+```<C#>
+services.AddDbContext<EventsContext>(options => // Specify your provider);
+```
+The EventsContext is injected in the EventStore implementation
 
 ## Read model Component
 The CommonDatabase class is the Entity Framework Core implementation of the [ICommonDatabase](https://github.com/wilcommerce/Wilcommerce.Core/blob/master/src/Wilcommerce.Core.Common/Domain/ReadModels/ICommonDatabase.cs) interface.
@@ -32,4 +38,7 @@ It requires a CommonContext instance as constructor parameter.
 The EventStore class is the Entity Framework Core implementation of the [IEventStore](https://github.com/wilcommerce/Wilcommerce.Core/blob/master/src/Wilcommerce.Core.Infrastructure/IEventStore.cs) interface.
 
 It provides the methods to persist all the events occurred.
-It requires a CommonContext instance as constructor parameter.
+It requires a EventsContext instance as constructor parameter.
+
+# Contributing
+If you want to contribute to Wilcommerce please, check the [CONTRIBUTING](CONTRIBUTING.md) file.

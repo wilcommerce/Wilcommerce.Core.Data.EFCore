@@ -3,6 +3,9 @@ using Wilcommerce.Core.Common.Domain.Events;
 
 namespace Wilcommerce.Core.Data.EFCore.Mapping
 {
+    /// <summary>
+    /// Defines the modelBuilder's extension methods to map the <see cref="EventWrapper"/> class
+    /// </summary>
     public static class EventMapping
     {
         /// <summary>

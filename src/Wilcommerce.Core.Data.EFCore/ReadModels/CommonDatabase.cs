@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Wilcommerce.Core.Common.Domain.Events;
 using Wilcommerce.Core.Common.Domain.Models;
 using Wilcommerce.Core.Common.Domain.ReadModels;
 
@@ -15,15 +14,14 @@ namespace Wilcommerce.Core.Data.EFCore.ReadModels
         /// </summary>
         protected CommonContext _context;
 
+        /// <summary>
+        /// Construct the common database
+        /// </summary>
+        /// <param name="context">The instance of the common context</param>
         public CommonDatabase(CommonContext context)
         {
             _context = context;
         }
-
-        /// <summary>
-        /// Get the list of events
-        /// </summary>
-        public IQueryable<EventWrapper> Events => _context.Events;
 
         /// <summary>
         /// Get the list of settings
