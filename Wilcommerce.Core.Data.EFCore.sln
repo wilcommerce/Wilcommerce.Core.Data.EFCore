@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B70C5F41-A3E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F8CEF5EE-6B53-464E-BC15-36647A0B6435}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -14,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wilcommerce.Core.Data.EFCor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{35FEF07C-624C-49C8-8441-842CCBE75478}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wilcommerce.Core.Data.EFCore.Test", "Wilcommerce.Core.Data.EFCore.Test\Wilcommerce.Core.Data.EFCore.Test.csproj", "{EE8B08D8-B340-4D2D-BE9C-FC675083B951}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wilcommerce.Core.Data.EFCore.Test", "Wilcommerce.Core.Data.EFCore.Test\Wilcommerce.Core.Data.EFCore.Test.csproj", "{EE8B08D8-B340-4D2D-BE9C-FC675083B951}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
