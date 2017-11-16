@@ -18,7 +18,7 @@ namespace Wilcommerce.Core.Data.EFCore.Mapping
                 .ToTable("Wilcommerce_Users")
                 .HasIndex(u => u.Email).IsUnique();
 
-            userMapping.HasOne(u => u.ProfileImage);
+            userMapping.OwnsOne(u => u.ProfileImage);
 
             return modelBuilder;
         }

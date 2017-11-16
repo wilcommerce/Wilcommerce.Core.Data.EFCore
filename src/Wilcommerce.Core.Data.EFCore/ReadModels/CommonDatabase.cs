@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Wilcommerce.Core.Common.Domain.Events;
 using Wilcommerce.Core.Common.Domain.Models;
 using Wilcommerce.Core.Common.Domain.ReadModels;
 
@@ -19,11 +18,6 @@ namespace Wilcommerce.Core.Data.EFCore.ReadModels
         {
             _context = context;
         }
-
-        /// <summary>
-        /// Get the list of events
-        /// </summary>
-        public IQueryable<EventWrapper> Events => _context.Events;
 
         /// <summary>
         /// Get the list of settings
