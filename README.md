@@ -39,3 +39,6 @@ The EventStore class is the Entity Framework Core implementation of the [IEventS
 
 It provides the methods to persist all the events occurred.
 It requires a EventsContext instance as constructor parameter.
+
+# Contributing
+If you want to contribute to Wilcommerce please, check the [CONTRIBUTING](CONTRIBUTING.md) file.
