@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using Microsoft.AspNetCore.Identity;
+using Moq;
+using System.Linq;
 using Wilcommerce.Core.Common.Domain.Models;
 using Wilcommerce.Core.Data.EFCore.ReadModels;
 using Wilcommerce.Core.Data.EFCore.Test.Fixtures;
@@ -26,7 +28,7 @@ namespace Wilcommerce.Core.Data.EFCore.Test.Repository
         {
             int usersCount = _database.Users.Count();
 
-            var user = User.CreateAsAdministrator("Administrator2", "admin2@wilcommerce.com", "456");
+            var user = User.CreateAsAdministrator("Administrator2", "admin2@wilcommerce.com", "456", new Mock<IPasswordHasher<User>>().Object);
             _repository.Add(user);
             _repository.SaveChanges();
 

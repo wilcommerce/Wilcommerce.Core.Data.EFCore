@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Moq;
 using System;
 using Wilcommerce.Core.Common.Domain.Models;
 
@@ -27,7 +29,7 @@ namespace Wilcommerce.Core.Data.EFCore.Test.Fixtures
 
         protected virtual void PrepareData()
         {
-            var administrator = User.CreateAsAdministrator("Administrator", "admin@wilcommerce.com", "123");
+            var administrator = User.CreateAsAdministrator("Administrator", "admin@wilcommerce.com", "123", new Mock<IPasswordHasher<User>>().Object);
             Context.Users.Add(administrator);
 
             var settings = GeneralSettings.Create("Wilcommerce", "it-IT", "EUR", "info@wilcommerce.com");
