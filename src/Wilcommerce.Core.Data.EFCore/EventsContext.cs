@@ -1,29 +1,24 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Wilcommerce.Core.Common.Domain.Models;
+using Wilcommerce.Core.Common.Events;
 using Wilcommerce.Core.Data.EFCore.Mapping;
 
 namespace Wilcommerce.Core.Data.EFCore
 {
     /// <summary>
-    /// Defines the Entity Framework context for the common package
+    /// Defines the Entity Framework context for the events
     /// </summary>
-    public class CommonContext : DbContext
+    public class EventsContext : DbContext
     {
         /// <summary>
-        /// Get or set the list of users
+        /// Get or set the events list
         /// </summary>
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<EventWrapper> Events { get; set; }
 
         /// <summary>
-        /// Get or set the list of settings
-        /// </summary>
-        public virtual DbSet<GeneralSettings> Settings { get; set; }
-
-        /// <summary>
-        /// Construct the common context
+        /// Construct the events context
         /// </summary>
         /// <param name="options">The context options</param>
-        public CommonContext(DbContextOptions<CommonContext> options)
+        public EventsContext(DbContextOptions<EventsContext> options)
             : base(options)
         {
 
@@ -35,10 +30,7 @@ namespace Wilcommerce.Core.Data.EFCore
         /// <param name="modelBuilder">The modelBuilder instance</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder
-                .MapUser()
-                .MapSettings();
-
+            modelBuilder.MapEvents();
             base.OnModelCreating(modelBuilder);
         }
     }
