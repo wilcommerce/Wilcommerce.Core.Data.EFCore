@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Wilcommerce.Core.Common.Events.User;
 using Wilcommerce.Core.Data.EFCore.Events;
 using Wilcommerce.Core.Data.EFCore.Test.Fixtures;
 using Xunit;

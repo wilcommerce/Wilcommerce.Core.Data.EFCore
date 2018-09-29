@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using Wilcommerce.Core.Common.Domain.Events;
-using Wilcommerce.Core.Common.Events.User;
-using Wilcommerce.Core.Data.EFCore.Events;
+using Wilcommerce.Core.Common.Events;
 
 namespace Wilcommerce.Core.Data.EFCore.Test.Fixtures
 {

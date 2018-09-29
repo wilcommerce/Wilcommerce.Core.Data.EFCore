@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Wilcommerce.Core.Common.Domain.Events;
+using Wilcommerce.Core.Common.Events;
 using Wilcommerce.Core.Infrastructure;
 
 namespace Wilcommerce.Core.Data.EFCore.Events

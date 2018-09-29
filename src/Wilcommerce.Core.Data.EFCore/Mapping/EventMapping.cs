@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Wilcommerce.Core.Common.Domain.Events;
+using Wilcommerce.Core.Common.Events;
 
 namespace Wilcommerce.Core.Data.EFCore.Mapping
 {
