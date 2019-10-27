@@ -41,7 +41,7 @@ namespace Wilcommerce.Core.Data.EFCore.Events
 
             return events
                 .AsEnumerable()
-                .Select(e => e.GetEventData(eventType) as TEvent);
+                .Select(e => e.Event as TEvent);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Wilcommerce.Core.Data.EFCore.Events
 
             return events
                 .AsEnumerable()
-                .Select(e => e.GetEventData(eventType) as TEvent);
+                .Select(e => e.Event as TEvent);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Wilcommerce.Core.Data.EFCore.Events
 
             return events
                 .AsEnumerable()
-                .Select(e => e.GetEventData(eventType) as TEvent);
+                .Select(e => e.Event as TEvent);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Wilcommerce.Core.Data.EFCore.Events
 
             return events
                 .AsEnumerable()
-                .Select(e => e.GetEventData(Type.GetType(e.EventType)) as DomainEvent);
+                .Select(e => e.Event as DomainEvent);
         }
 
         /// <summary>
