@@ -8,7 +8,7 @@ namespace Wilcommerce.Core.Data.EFCore.Test.Fixtures
         public Guid UserId { get; private set; }
 
         public UserEnabledEvent(Guid userId)
-            : base(userId, typeof(UserEnabledEvent))
+            : base(userId, typeof(User))
         {
             UserId = userId;
         }

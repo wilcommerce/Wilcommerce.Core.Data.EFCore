@@ -35,7 +35,7 @@ namespace Wilcommerce.Core.Data.EFCore.Events
         public IEnumerable<TEvent> Find<TEvent>(DateTime timestamp) where TEvent : DomainEvent
         {
             var eventType = typeof(TEvent);
-            string eventTypeString = eventType.ToString();
+            string eventTypeString = ConvertEntityTypeToString(eventType);
 
             var events = _FindBy(e => e.EventType == eventTypeString && e.Timestamp <= timestamp);
 
@@ -54,7 +54,7 @@ namespace Wilcommerce.Core.Data.EFCore.Events
         public IEnumerable<TEvent> Find<TEvent>(string entityType, DateTime timestamp) where TEvent : DomainEvent
         {
             var eventType = typeof(TEvent);
-            string eventTypeString = eventType.ToString();
+            string eventTypeString = ConvertEntityTypeToString(eventType);
 
             var events = _FindBy(e => e.EventType == eventTypeString && e.AggregateType == entityType && e.Timestamp <= timestamp);
 
@@ -74,7 +74,7 @@ namespace Wilcommerce.Core.Data.EFCore.Events
         public IEnumerable<TEvent> Find<TEvent>(string entityType, Guid entityId, DateTime timestamp) where TEvent : DomainEvent
         {
             var eventType = typeof(TEvent);
-            string eventTypeString = eventType.ToString();
+            string eventTypeString = ConvertEntityTypeToString(eventType);
 
             var events = _FindBy(e => e.EventType == eventTypeString && e.AggregateType == entityType && e.AggregateId == entityId && e.Timestamp <= timestamp);
 
@@ -135,6 +135,16 @@ namespace Wilcommerce.Core.Data.EFCore.Events
             return _context.Events
                 .Where(criteria)
                 .OrderByDescending(e => e.Timestamp);
+        }
+
+        /// <summary>
+        /// Returns the event type as a string
+        /// </summary>
+        /// <param name="eventType">The event type to convert</param>
+        /// <returns>The event type as a string</returns>
+        protected string ConvertEntityTypeToString(Type eventType)
+        {
+            return $"{eventType.FullName}, {eventType.Assembly.GetName().Name}";
         }
         #endregion
     }
