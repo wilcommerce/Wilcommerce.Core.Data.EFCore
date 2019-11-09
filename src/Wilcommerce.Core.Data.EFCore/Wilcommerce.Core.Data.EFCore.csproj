@@ -14,7 +14,7 @@
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <Version>1.0.0</Version>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>Move to .NETStandard 2.1</PackageReleaseNotes>
     <Authors>Alberto Mori</Authors>
     <Description>Wilcommerce Core implementation for Entity Framework Core</Description>
     <Title>Wilcommerce.Core.Data.EFCore</Title>
