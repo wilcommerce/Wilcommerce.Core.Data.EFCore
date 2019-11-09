@@ -19,6 +19,9 @@ namespace Wilcommerce.Core.Data.EFCore.Mapping
                 .ToTable("Wilcommerce_Events")
                 .HasKey(e => e.Id);
 
+            modelBuilder.Entity<EventWrapper>()
+                .Ignore(e => e.Event);
+
             return modelBuilder;
         }
     }

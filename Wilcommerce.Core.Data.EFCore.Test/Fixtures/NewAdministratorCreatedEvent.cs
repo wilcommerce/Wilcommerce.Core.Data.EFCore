@@ -10,7 +10,7 @@ namespace Wilcommerce.Core.Data.EFCore.Test.Fixtures
         public string Email { get; private set; }
 
         public NewAdministratorCreatedEvent(Guid userId, string name, string email)
-            : base(userId ,typeof(NewAdministratorCreatedEvent))
+            : base(userId ,typeof(User))
         {
             UserId = userId;
             Name = name;

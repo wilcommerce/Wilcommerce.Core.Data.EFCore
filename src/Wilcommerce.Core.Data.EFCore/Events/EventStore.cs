@@ -23,7 +23,7 @@ namespace Wilcommerce.Core.Data.EFCore.Events
         /// <param name="context">The db context instance</param>
         public EventStore(EventsContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         /// <summary>
@@ -35,13 +35,13 @@ namespace Wilcommerce.Core.Data.EFCore.Events
         public IEnumerable<TEvent> Find<TEvent>(DateTime timestamp) where TEvent : DomainEvent
         {
             var eventType = typeof(TEvent);
-            string eventTypeString = eventType.ToString();
+            string eventTypeString = ConvertEntityTypeToString(eventType);
 
             var events = _FindBy(e => e.EventType == eventTypeString && e.Timestamp <= timestamp);
 
             return events
                 .AsEnumerable()
-                .Select(e => e.GetEventData(eventType) as TEvent);
+                .Select(e => e.Event as TEvent);
         }
 
         /// <summary>
@@ -54,13 +54,13 @@ namespace Wilcommerce.Core.Data.EFCore.Events
         public IEnumerable<TEvent> Find<TEvent>(string entityType, DateTime timestamp) where TEvent : DomainEvent
         {
             var eventType = typeof(TEvent);
-            string eventTypeString = eventType.ToString();
+            string eventTypeString = ConvertEntityTypeToString(eventType);
 
             var events = _FindBy(e => e.EventType == eventTypeString && e.AggregateType == entityType && e.Timestamp <= timestamp);
 
             return events
                 .AsEnumerable()
-                .Select(e => e.GetEventData(eventType) as TEvent);
+                .Select(e => e.Event as TEvent);
         }
 
         /// <summary>
@@ -74,13 +74,13 @@ namespace Wilcommerce.Core.Data.EFCore.Events
         public IEnumerable<TEvent> Find<TEvent>(string entityType, Guid entityId, DateTime timestamp) where TEvent : DomainEvent
         {
             var eventType = typeof(TEvent);
-            string eventTypeString = eventType.ToString();
+            string eventTypeString = ConvertEntityTypeToString(eventType);
 
             var events = _FindBy(e => e.EventType == eventTypeString && e.AggregateType == entityType && e.AggregateId == entityId && e.Timestamp <= timestamp);
 
             return events
                 .AsEnumerable()
-                .Select(e => e.GetEventData(eventType) as TEvent);
+                .Select(e => e.Event as TEvent);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Wilcommerce.Core.Data.EFCore.Events
 
             return events
                 .AsEnumerable()
-                .Select(e => e.GetEventData(Type.GetType(e.EventType)) as DomainEvent);
+                .Select(e => e.Event as DomainEvent);
         }
 
         /// <summary>
@@ -106,6 +106,11 @@ namespace Wilcommerce.Core.Data.EFCore.Events
         /// <param name="event">The event to save</param>
         public void Save<TEvent>(TEvent @event) where TEvent : DomainEvent
         {
+            if (@event == null)
+            {
+                throw new ArgumentNullException(nameof(@event));
+            }
+
             try
             {
                 var ev = EventWrapper.Wrap(@event);
@@ -135,6 +140,16 @@ namespace Wilcommerce.Core.Data.EFCore.Events
             return _context.Events
                 .Where(criteria)
                 .OrderByDescending(e => e.Timestamp);
+        }
+
+        /// <summary>
+        /// Returns the event type as a string
+        /// </summary>
+        /// <param name="eventType">The event type to convert</param>
+        /// <returns>The event type as a string</returns>
+        protected string ConvertEntityTypeToString(Type eventType)
+        {
+            return $"{eventType.FullName}, {eventType.Assembly.GetName().Name}";
         }
         #endregion
     }
