@@ -23,7 +23,7 @@ namespace Wilcommerce.Core.Data.EFCore.Events
         /// <param name="context">The db context instance</param>
         public EventStore(EventsContext context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         /// <summary>
@@ -106,6 +106,11 @@ namespace Wilcommerce.Core.Data.EFCore.Events
         /// <param name="event">The event to save</param>
         public void Save<TEvent>(TEvent @event) where TEvent : DomainEvent
         {
+            if (@event == null)
+            {
+                throw new ArgumentNullException(nameof(@event));
+            }
+
             try
             {
                 var ev = EventWrapper.Wrap(@event);
