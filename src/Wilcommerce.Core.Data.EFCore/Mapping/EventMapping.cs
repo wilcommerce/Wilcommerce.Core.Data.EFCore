@@ -20,6 +20,10 @@ namespace Wilcommerce.Core.Data.EFCore.Mapping
                 .HasKey(e => e.Id);
 
             modelBuilder.Entity<EventWrapper>()
+                .Property(e => e.Id)
+                .ValueGeneratedNever();
+
+            modelBuilder.Entity<EventWrapper>()
                 .Ignore(e => e.Event);
 
             return modelBuilder;
