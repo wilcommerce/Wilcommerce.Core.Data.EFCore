@@ -106,7 +106,7 @@ namespace Wilcommerce.Core.Data.EFCore.Events
         /// <param name="event">The event to save</param>
         public void Save<TEvent>(TEvent @event) where TEvent : DomainEvent
         {
-            if (@event == null)
+            if (@event is null)
             {
                 throw new ArgumentNullException(nameof(@event));
             }
@@ -132,7 +132,7 @@ namespace Wilcommerce.Core.Data.EFCore.Events
         /// <returns>The list of event wrapper</returns>
         protected virtual IQueryable<EventWrapper> _FindBy(Expression<Func<EventWrapper, bool>> criteria)
         {
-            if (criteria == null)
+            if (criteria is null)
             {
                 throw new ArgumentException("criteria");
             }
