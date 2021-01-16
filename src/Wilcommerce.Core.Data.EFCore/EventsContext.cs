@@ -30,8 +30,8 @@ namespace Wilcommerce.Core.Data.EFCore
         /// <param name="modelBuilder">The modelBuilder instance</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.MapEvents();
             base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new EventMapper());
         }
     }
 }

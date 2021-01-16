@@ -33,7 +33,7 @@ namespace Wilcommerce.Core.Data.EFCore.Test.Events
                 var eventStore = new EventStore(context);
                 _fixtures.PrepareData(context, new NewAdministratorCreatedEvent[]
                 {
-                    new NewAdministratorCreatedEvent(_fixtures.UserId, "Administrator", "admin@wilcommerce.com")
+                    new NewAdministratorCreatedEvent(_fixtures.UserId, "Administrator", "admin@wilcommerce.com", Guid.NewGuid().ToString())
                 });
 
                 var events = eventStore.Find<NewAdministratorCreatedEvent>(DateTime.Now);
@@ -56,9 +56,9 @@ namespace Wilcommerce.Core.Data.EFCore.Test.Events
                 var eventStore = new EventStore(context);
                 _fixtures.PrepareData(context, new DomainEvent[]
                 {
-                    new NewAdministratorCreatedEvent(_fixtures.UserId, "Administrator", "admin@wilcommerce.com"),
-                    new UserEnabledEvent(_fixtures.UserId),
-                    new UserDisabledEvent(_fixtures.UserId)
+                    new NewAdministratorCreatedEvent(_fixtures.UserId, "Administrator", "admin@wilcommerce.com", Guid.NewGuid().ToString()),
+                    new UserEnabledEvent(_fixtures.UserId, Guid.NewGuid().ToString()),
+                    new UserDisabledEvent(_fixtures.UserId, Guid.NewGuid().ToString())
                 });
 
                 var entityType = typeof(User);
@@ -79,7 +79,7 @@ namespace Wilcommerce.Core.Data.EFCore.Test.Events
                 var eventStore = new EventStore(context);
                 _fixtures.PrepareData(context, new NewAdministratorCreatedEvent[]
                 {
-                    new NewAdministratorCreatedEvent(_fixtures.UserId, "Administrator", "admin@wilcommerce.com")
+                    new NewAdministratorCreatedEvent(_fixtures.UserId, "Administrator", "admin@wilcommerce.com", Guid.NewGuid().ToString())
                 });
 
                 var entityType = typeof(User);
@@ -103,7 +103,7 @@ namespace Wilcommerce.Core.Data.EFCore.Test.Events
                 var eventStore = new EventStore(context);
                 _fixtures.PrepareData(context, new NewAdministratorCreatedEvent[]
                 {
-                    new NewAdministratorCreatedEvent(_fixtures.UserId, "Administrator", "admin@wilcommerce.com")
+                    new NewAdministratorCreatedEvent(_fixtures.UserId, "Administrator", "admin@wilcommerce.com", Guid.NewGuid().ToString())
                 });
 
                 var entityType = typeof(User);
@@ -140,7 +140,7 @@ namespace Wilcommerce.Core.Data.EFCore.Test.Events
             {
                 var eventStore = new EventStore(context);
                 
-                var ev = new NewAdministratorCreatedEvent(Guid.NewGuid(), "Administrator2", "admin2@wilcommerce.com");
+                var ev = new NewAdministratorCreatedEvent(Guid.NewGuid(), "Administrator2", "admin2@wilcommerce.com", Guid.NewGuid().ToString());
                 eventStore.Save(ev);
 
                 int count = eventStore.Find<NewAdministratorCreatedEvent>(DateTime.Now).Count();
