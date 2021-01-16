@@ -5,12 +5,12 @@ namespace Wilcommerce.Core.Data.EFCore.Test.Fixtures
 {
     public class UserDisabledEvent : DomainEvent
     {
-        public Guid UserId { get; private set; }
+        public Guid UserDisabledId { get; private set; }
 
-        public UserDisabledEvent(Guid userId)
-            : base(userId, typeof(User))
+        public UserDisabledEvent(Guid userDisabledId, string userId)
+            : base(userDisabledId, typeof(User), userId)
         {
-            UserId = userId;
+            UserDisabledId = userDisabledId;
         }
     }
 }

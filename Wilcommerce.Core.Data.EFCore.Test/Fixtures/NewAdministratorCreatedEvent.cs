@@ -5,14 +5,14 @@ namespace Wilcommerce.Core.Data.EFCore.Test.Fixtures
 {
     public class NewAdministratorCreatedEvent : DomainEvent
     {
-        public Guid UserId { get; private set; }
+        public Guid AdministratorId { get; private set; }
         public string Name { get; private set; }
         public string Email { get; private set; }
 
-        public NewAdministratorCreatedEvent(Guid userId, string name, string email)
-            : base(userId ,typeof(User))
+        public NewAdministratorCreatedEvent(Guid administratorId, string name, string email, string userId)
+            : base(administratorId ,typeof(User), userId)
         {
-            UserId = userId;
+            AdministratorId = administratorId;
             Name = name;
             Email = email;
         }
